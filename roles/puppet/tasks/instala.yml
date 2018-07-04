@@ -1,0 +1,20 @@
+- name: Adiciona Repositorio Puppet Debian
+  apt:
+    deb: https://apt.puppetlabs.com/puppet5-release-xenial.deb
+  when: ansible_os_family == 'Debian' 
+- name: Instala Puppet no Debian
+  apt:
+    name: puppet-agent
+    update_cache: yes
+    state: present
+  when: ansible_os_family == 'Debian'
+- name: Adiciona Repositorio Puppet Centos
+  yum:
+    name: https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
+    state: present
+  when: ansible_os_family == 'RedHat'
+- name: Instala Puppet no Centos
+  yum:
+    name: puppet-agent
+    state: present
+  when: ansible_os_family == 'RedHat'

@@ -1,0 +1,6 @@
+---
+# tasks file for puppet
+- name: Puppet
+  hosts: all
+  tasks:
+    - include: instala.yml
