@@ -1,0 +1,19 @@
+---
+- name: Apache
+  hosts: automation
+  tasks: 
+    - name: Instalando repositorio do Jenkins
+      yum_repository:
+        name: jenkins.repo
+        description: JENKINS YUM repo
+        baseurl: http://pkg.jenkins-ci.org/redhat-stable
+        gpgkey: https://jenkins-ci.org/redhat/jenkins-ci.org.key
+        gpgcheck: yes
+    - name: Instalando o Java
+      yum:
+        name: java
+        state: present
+    - name: Instalando o Jenkins
+      yum:
+        name: jenkins
+        state: present
